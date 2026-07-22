@@ -1,0 +1,31 @@
+---
+// Checkout embebido de OrioPay con LAZY LOAD por rendimiento.
+// Solo un contenedor + window.__orioLoad() que inyecta embed.js al presionar un botón
+// de compra (async=false para que document.currentScript funcione). Cargamos desde
+// www.oriopay.app (el apex 307 a www rompería el filtro de origen del mensaje de altura
+// y se cortaría). La altura la ajusta OrioPay solo. Slug/color/font llegan por props.
+const { slug, color = "#d2542b", font = "Poppins", radius = "12" } = Astro.props;
+---
+<div
+  class="oriopay-embed mx-auto w-full max-w-xl"
+  data-oriopay-slug={slug}
+  data-oriopay-color={color}
+  data-oriopay-font={font}
+  data-oriopay-radius={radius}
+></div>
+
+<script>
+  window.__orioLoad = function () {
+    var box = document.querySelector(".oriopay-embed");
+    if (!box || box.dataset.loaded) return;
+    box.dataset.loaded = "1";
+    var s = document.createElement("script");
+    s.src = "https://www.oriopay.app/embed.js";
+    s.async = false; // necesario para document.currentScript en embed.js
+    s.setAttribute("data-slug", box.dataset.oriopaySlug);
+    s.setAttribute("data-color", box.dataset.oriopayColor);
+    s.setAttribute("data-font", box.dataset.oriopayFont);
+    s.setAttribute("data-radius", box.dataset.oriopayRadius);
+    box.appendChild(s);
+  };
+</script>

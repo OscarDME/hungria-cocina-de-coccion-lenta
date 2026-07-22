@@ -32,11 +32,10 @@ const variants = {
 const cls = `${base} ${variants[variant] || variants.primary} ${block ? 'w-full' : ''}`;
 ---
 
-<a
-  href={href}
+<button
+  type="button"
   id={id}
   data-checkout
-  data-checkout-base={href}
   data-offer-price={price}
   class={cls}
 >
@@ -50,7 +49,7 @@ const cls = `${base} ${variants[variant] || variants.primary} ${block ? 'w-full'
   }
   <span class="relative">{label}</span>
   {sub && <span class="relative mt-0.5 text-[12px] font-medium opacity-80">({sub})</span>}
-</a>
+</button>
 
 <script>
   // Doc §13.3: prioridad URL del navegador > localStorage. Se ejecuta una vez
@@ -84,10 +83,14 @@ const cls = `${base} ${variants[variant] || variants.primary} ${block ? 'w-full'
 
     const buttons = document.querySelectorAll('[data-checkout]');
     buttons.forEach((btn) => {
-      const base = btn.getAttribute('data-checkout-base');
-      if (base) btn.setAttribute('href', buildUrl(base));
-
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Abrir el checkout embebido de OrioPay (en la sección de oferta), sin redirigir.
+        const reveal = document.getElementById('checkout-embed-anchor');
+        if (reveal) reveal.classList.remove('hidden');
+        if (typeof window.__orioLoad === 'function') window.__orioLoad();
+        if (reveal) reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // begin_checkout (dataLayer). El InitiateCheckout de Meta lo dispara el embed.
         try {
           const raw = btn.getAttribute('data-offer-price') || '';
           const cleaned = String(raw).replace(/[^\d.,]/g, '').replace(',', '.');

@@ -7,8 +7,10 @@ import garantia from '../assets/garantia.webp';
 import { copy } from '../lib/copy.js';
 import { CHECKOUT } from '../lib/checkout.js';
 import CheckoutButton from './CheckoutButton.astro';
+import CheckoutEmbed from './CheckoutEmbed.astro';
 import Icon from './Icon.astro';
 const { finalCta, inspiration } = copy;
+const CHECKOUT_SLUG = new URL(CHECKOUT.ebooks).pathname.split('/').filter(Boolean).pop();
 ---
 
 <section
@@ -79,6 +81,11 @@ const { finalCta, inspiration } = copy;
           </div>
         </div>
       </div>
+    </div>
+
+    {/* Checkout OrioPay — oculto hasta presionar un CTA; se despliega debajo del card. */}
+    <div id="checkout-embed-anchor" class="hidden mt-8">
+      <CheckoutEmbed slug={CHECKOUT_SLUG} />
     </div>
   </div>
 </section>

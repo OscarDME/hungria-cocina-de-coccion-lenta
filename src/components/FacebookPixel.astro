@@ -28,18 +28,31 @@ const PIXEL_ID = '1357041349597963';
   fbq('track', 'PageView');
 </script>
 
-<script is:inline>
-  // Dedupe: evita PageViews duplicados (doc §12 Bloque 2)
+<script is:inline define:vars={{ PIXEL_ID }}>
+  // Dedupe de PageView + bloqueo de re-init de pixel (el embed.js hace fbq('init', ...)
+  // al abrir el checkout, lo que reactivaría autoConfig y dispararía un PageView
+  // automático fantasma). Cubre 'track' y 'trackSingle'.
   (function () {
     if (!window.fbq) return;
     let lastPVUrl = location.href;
+    var seenPixels = {};
+    seenPixels[String(PIXEL_ID)] = true;
     const origCallMethod = window.fbq.callMethod;
     window.fbq.callMethod = function () {
       const args = Array.prototype.slice.call(arguments);
-      if (args[0] === 'track' && args[1] === 'PageView') {
+      var a0 = args[0];
+      var isPV = (a0 === 'track' && args[1] === 'PageView') ||
+                 (a0 === 'trackSingle' && args[2] === 'PageView');
+      if (isPV) {
         if (lastPVUrl === location.href && window.__pvSent) return;
         lastPVUrl = location.href;
         window.__pvSent = true;
+      }
+      if (a0 === 'init') {
+        var pid = String(args[1] || '');
+        if (seenPixels[pid]) return;
+        seenPixels[pid] = true;
+        try { origCallMethod && origCallMethod.call(this, 'set', 'autoConfig', false, pid); } catch (e) {}
       }
       return origCallMethod && origCallMethod.apply(this, args);
     };
