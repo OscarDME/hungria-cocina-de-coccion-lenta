@@ -1,0 +1,89 @@
+---
+// Sección 3 — Story "Stressvrij avondeten" (doc §8). 100% estático.
+import { Image } from 'astro:assets';
+import storyImg from '../assets/story.webp';
+import { copy } from '../lib/copy.js';
+import { CHECKOUT } from '../lib/checkout.js';
+import CheckoutButton from './CheckoutButton.astro';
+import RichText from './RichText.astro';
+const { story, hero, inspiration } = copy;
+---
+
+<section
+  aria-labelledby="story-heading"
+  class="relative overflow-hidden bg-slow-sage/60 py-16 sm:py-24"
+>
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+    {/* imagen */}
+    <div class="reveal relative order-1 lg:order-none">
+      <div class="overflow-hidden rounded-[1.6rem] shadow-frame ring-1 ring-slow-ink/5">
+        <Image
+          src={storyImg}
+          alt={story.imageAlt}
+          widths={[420, 640, 860]}
+          sizes="(min-width:1024px) 520px, 92vw"
+          formats={['avif', 'webp']}
+          quality={82}
+          loading="lazy"
+          class="aspect-[4/3] h-full w-full object-cover"
+        />
+      </div>
+      <div class="absolute -bottom-5 -right-3 hidden rotate-3 rounded-2xl bg-white px-5 py-3 text-center shadow-card sm:block">
+        <span class="text-[15px] font-black text-slow-terracotta">{hero.book.badge}</span>
+      </div>
+    </div>
+
+    {/* texto */}
+    <div class="reveal">
+      <h2
+        id="story-heading"
+        class="mt-3 text-balance text-3xl font-black leading-tight tracking-tight text-slow-ink sm:text-[2.6rem]"
+      >
+        {story.heading}
+      </h2>
+
+      <div class="mt-5 space-y-3 text-[16px] leading-relaxed text-slow-ink-soft">
+        {story.paragraphs.map((p) => <p>{p}</p>)}
+        <p class="text-[17px] font-medium text-slow-ink">
+          <RichText segments={story.highlightRich} />
+        </p>
+      </div>
+
+      <div class="mt-6 rounded-2xl border-l-4 border-slow-terracotta bg-white/70 p-5 shadow-soft">
+        <p class="text-lg font-extrabold text-slow-terracotta">{story.question}</p>
+        <p class="mt-1.5 text-[15.5px] leading-relaxed text-slow-ink-soft">{story.answer}</p>
+        <p class="mt-2 text-[15.5px] font-medium italic text-slow-ink">{story.closer}</p>
+      </div>
+
+      {/* CTAs repetidos */}
+      <div class="mt-7 flex flex-col gap-3 sm:max-w-md">
+        <CheckoutButton
+          href={CHECKOUT.ebooks}
+          label={hero.ctaPrimary.label}
+          sub={hero.ctaPrimary.sub}
+          price={inspiration.price}
+          variant="primary"
+          block={true}
+        />
+        <div class="grid gap-3 sm:grid-cols-2">
+          <CheckoutButton
+            href={CHECKOUT.hardcoverNL}
+            label={hero.ctaSecondary.label}
+            sub={hero.ctaSecondary.sub}
+            price={inspiration.price}
+            variant="secondary"
+            block={true}
+          />
+          <CheckoutButton
+            href={CHECKOUT.hardcoverAbroad}
+            label={hero.ctaTertiary.label}
+            sub={hero.ctaTertiary.sub}
+            price={inspiration.price}
+            variant="secondary"
+            block={true}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

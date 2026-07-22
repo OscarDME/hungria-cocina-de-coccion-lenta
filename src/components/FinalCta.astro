@@ -1,0 +1,84 @@
+---
+// Sección 9 — FinalCta (doc §8.3). id="final-cta-section" OBLIGATORIO.
+// Copy de copy.finalCta. CTA principal al checkout hardcover.
+import { Image } from 'astro:assets';
+import ctaImg from '../assets/hero-mockup.webp';
+import garantia from '../assets/garantia.webp';
+import { copy } from '../lib/copy.js';
+import { CHECKOUT } from '../lib/checkout.js';
+import CheckoutButton from './CheckoutButton.astro';
+import Icon from './Icon.astro';
+const { finalCta, inspiration } = copy;
+---
+
+<section
+  id="final-cta-section"
+  aria-labelledby="final-cta-heading"
+  class="scroll-mt-6 bg-slow-cream py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal overflow-hidden rounded-[2rem] border border-slow-cream-deep bg-white shadow-frame">
+      <div class="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        {/* imagen del libro */}
+        <div class="relative mx-auto w-full max-w-[320px]">
+          <div class="overflow-hidden rounded-[1.4rem] shadow-frame ring-1 ring-slow-ink/10">
+            <Image
+              src={ctaImg}
+              alt={finalCta.imageAlt}
+              widths={[320, 480, 640]}
+              sizes="(min-width:1024px) 340px, 80vw"
+              formats={['avif', 'webp']}
+              quality={84}
+              loading="lazy"
+              class="aspect-[3/4] h-full w-full object-cover"
+            />
+          </div>
+          <span class="absolute -left-3 top-5 -rotate-6 rounded-full bg-slow-gold px-3 py-1 text-[12px] font-black uppercase tracking-wide text-slow-ink shadow-card">
+            {copy.hero.book.badge}
+          </span>
+        </div>
+
+        {/* texto + CTA */}
+        <div>
+          <p class="eyebrow text-slow-terracotta">{finalCta.kicker}</p>
+          <h2
+            id="final-cta-heading"
+            class="mt-3 text-balance text-3xl font-black leading-tight tracking-tight text-slow-ink sm:text-[2.6rem]"
+          >
+            {finalCta.heading}
+          </h2>
+
+          <p class="mt-4 text-[17px] font-semibold text-slow-forest-dark">{finalCta.lead}</p>
+          <div class="mt-3 space-y-3 text-[15.5px] leading-relaxed text-slow-ink-soft">
+            {finalCta.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+
+          <div class="mt-7 sm:max-w-md">
+            <CheckoutButton
+              href={CHECKOUT.hardcoverNL}
+              label={finalCta.cta}
+              price={inspiration.price}
+              variant="primary"
+              block={true}
+            />
+          </div>
+          <p class="mt-3 flex items-center gap-2 text-[13.5px] font-semibold text-slow-forest-dark">
+            <Icon name="check" class="h-4 w-4" /> {finalCta.ctaNote}
+          </p>
+          <div class="mt-6">
+            <Image
+              src={garantia}
+              alt="Garantie"
+              widths={[160, 240, 320]}
+              sizes="200px"
+              formats={['avif', 'webp']}
+              quality={85}
+              loading="lazy"
+              class="h-auto w-44"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

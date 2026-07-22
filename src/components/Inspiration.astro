@@ -1,0 +1,57 @@
+---
+// Sección 5 — "Nooit meer inspiratie gebrek" (agitación + CTA). Copy de
+// copy.inspiration. CTA al checkout hardcover (precio € 54,95).
+import { copy } from '../lib/copy.js';
+import { CHECKOUT } from '../lib/checkout.js';
+import CheckoutButton from './CheckoutButton.astro';
+import Icon from './Icon.astro';
+const { inspiration } = copy;
+---
+
+<section
+  aria-labelledby="inspiration-heading"
+  class="bg-slow-cream py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal overflow-hidden rounded-[2rem] bg-slow-ink text-slow-cream shadow-frame">
+      <div class="grid gap-8 p-8 sm:p-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div>
+          <p class="eyebrow text-slow-gold">{inspiration.subheading}</p>
+          <h2
+            id="inspiration-heading"
+            class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-[2.5rem]"
+          >
+            {inspiration.heading}
+          </h2>
+
+          <div class="mt-5 space-y-3 text-[15.5px] leading-relaxed text-slow-cream/85">
+            {inspiration.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+
+          <p class="mt-6 flex items-start gap-3 rounded-2xl bg-white/10 p-4 text-[15.5px] font-medium text-white ring-1 ring-white/15">
+            <Icon name="sparkle" class="mt-0.5 h-5 w-5 shrink-0 text-slow-gold" />
+            <span>{inspiration.highlight}</span>
+          </p>
+        </div>
+
+        {/* Tarjeta CTA con precio */}
+        <div class="rounded-[1.4rem] bg-slow-cream p-7 text-center text-slow-ink shadow-card">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-slow-terracotta/12 px-3 py-1 text-[12px] font-bold uppercase tracking-wide text-slow-terracotta">
+            <Icon name="book" class="h-4 w-4" /> {copy.hero.book.badge}
+          </span>
+          <p class="mt-4 text-[13px] font-semibold uppercase tracking-wide text-slow-moss">{inspiration.priceLabel}</p>
+          <p class="text-5xl font-black leading-none text-slow-forest-dark">{inspiration.price}</p>
+          <div class="mt-6">
+            <CheckoutButton
+              href={CHECKOUT.hardcoverNL}
+              label={inspiration.cta}
+              price={inspiration.price}
+              variant="primary"
+              block={true}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

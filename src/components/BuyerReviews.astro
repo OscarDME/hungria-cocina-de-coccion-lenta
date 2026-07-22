@@ -1,0 +1,58 @@
+---
+// Sección 4 — "Wat andere kopers zeggen" (doc §8). Los testimonios eran capturas
+// en el original; aquí son tarjetas de texto + código. Copy de copy.buyerReviews.
+import { copy } from '../lib/copy.js';
+import StarRating from './StarRating.astro';
+import Icon from './Icon.astro';
+const { buyerReviews, a11y } = copy;
+---
+
+<section
+  aria-labelledby="buyer-reviews-heading"
+  class="bg-slow-cream py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2
+        id="buyer-reviews-heading"
+        class="mt-3 text-balance text-3xl font-black tracking-tight text-slow-ink sm:text-[2.5rem]"
+      >
+        {buyerReviews.heading}
+      </h2>
+    </div>
+
+    <ul role="list" aria-label={a11y.reviewsRegion} class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        buyerReviews.items.map((r, i) => (
+          <li
+            class="reveal flex h-full flex-col rounded-3xl border border-slow-cream-deep bg-white p-6 shadow-card"
+            style={`transition-delay:${(i % 3) * 90}ms`}
+          >
+            <div class="flex items-center justify-between">
+              <StarRating value={r.rating} class="h-5 w-5" />
+              <span class="inline-flex items-center gap-1 rounded-full bg-slow-sage px-2.5 py-1 text-[11px] font-bold text-slow-forest-dark">
+                <Icon name="check" class="h-3.5 w-3.5" />
+                {r.source}
+              </span>
+            </div>
+
+            {r.title && (
+              <h3 class="mt-4 text-[16px] font-extrabold leading-snug text-slow-ink">{r.title}</h3>
+            )}
+            <p class="mt-2 flex-1 text-[14.5px] leading-relaxed text-slow-ink-soft">{r.quote}</p>
+
+            <div class="mt-5 flex items-center gap-3 border-t border-slow-cream-deep pt-4">
+              <span
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-slow-terracotta/12 text-[14px] font-black uppercase text-slow-terracotta"
+                aria-hidden="true"
+              >
+                {r.name.trim().charAt(0)}
+              </span>
+              <span class="text-[13.5px] font-semibold text-slow-ink">{r.name}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

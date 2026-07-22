@@ -1,0 +1,18 @@
+---
+// Doc §13: captura `src` y `fbclid` de la URL al cargar y los guarda en
+// localStorage para que los CTAs los recuperen al construir la URL de checkout.
+---
+
+<script is:inline>
+  (function () {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const src = params.get('src');
+      const fbclid = params.get('fbclid');
+      if (src) localStorage.setItem('hotmart_src', src);
+      if (fbclid) localStorage.setItem('hotmart_fbclid', fbclid);
+    } catch (_) {
+      /* no-op */
+    }
+  })();
+</script>

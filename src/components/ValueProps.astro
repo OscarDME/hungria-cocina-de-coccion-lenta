@@ -1,0 +1,29 @@
+---
+// Sección 2 — 3 propuestas de valor (íconos SVG, doc §8). Texto de copy.valueProps.
+import { copy } from '../lib/copy.js';
+import Icon from './Icon.astro';
+const items = copy.valueProps;
+---
+
+<section aria-label={copy.a11y.valuePropsRegion} class="bg-slow-cream pb-4 pt-2 sm:pb-8">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="grid gap-4 rounded-4xl border border-slow-sage-deep/70 bg-white/70 p-4 shadow-soft sm:grid-cols-3 sm:gap-2 sm:p-6">
+      {
+        items.map((it, i) => (
+          <div
+            class={`reveal flex items-start gap-4 rounded-3xl p-4 sm:flex-col sm:items-center sm:text-center ${i === 1 ? 'sm:border-x sm:border-slow-sage-deep/60' : ''}`}
+            style={`transition-delay:${i * 90}ms`}
+          >
+            <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slow-sage text-slow-forest-dark shadow-soft">
+              <Icon name={it.icon} class="h-7 w-7" />
+            </span>
+            <div>
+              <h3 class="text-[17px] font-extrabold text-slow-ink">{it.title}</h3>
+              <p class="mt-1 text-[14.5px] leading-relaxed text-slow-ink-soft">{it.text}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

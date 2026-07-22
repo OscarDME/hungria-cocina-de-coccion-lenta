@@ -1,0 +1,45 @@
+---
+// Sección 10 — "Reviews": badges Trustpilot + Google recreados en código
+// (estrellas SVG + score, sin logos de marca ni imágenes). Copy de copy.ratings.
+import { copy } from '../lib/copy.js';
+import StarRating from './StarRating.astro';
+import Icon from './Icon.astro';
+const { ratings } = copy;
+---
+
+<section
+  aria-labelledby="ratings-heading"
+  class="bg-slow-cream py-16 sm:py-20"
+>
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="reveal text-center">
+      <h2 id="ratings-heading" class="text-3xl font-black tracking-tight text-slow-ink sm:text-[2.4rem]">
+        {ratings.heading}
+      </h2>
+    </div>
+
+    <div class="mt-9 grid gap-5 sm:grid-cols-2">
+      {
+        ratings.items.map((r) => (
+          <div class="reveal flex items-center gap-5 rounded-3xl border border-slow-cream-deep bg-white p-6 shadow-card">
+            <div class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-slow-forest text-white">
+              <span class="text-2xl font-black leading-none">{r.score}</span>
+              <span class="text-[10px] font-semibold opacity-80">/ {r.max}</span>
+            </div>
+            <div class="min-w-0">
+              <p class="text-[17px] font-extrabold text-slow-ink">{r.platform}</p>
+              <StarRating value={5} class="mt-1 h-4 w-4" />
+              <p class="mt-1 text-[13px] font-medium text-slow-moss">
+                <span class="font-bold text-slow-ink-soft">{r.count}</span> {r.countLabel}
+                <span class="mx-1.5 text-slow-cream-deep">•</span>
+                <span class="inline-flex items-center gap-1">
+                  <Icon name="check" class="h-3.5 w-3.5 text-slow-forest" />{r.note}
+                </span>
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

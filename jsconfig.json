@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "checkJs": false
+  },
+  "include": ["src/**/*", "scripts/**/*", "*.mjs"],
+  "exclude": ["node_modules", "dist"]
+}

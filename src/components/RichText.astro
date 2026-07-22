@@ -1,0 +1,19 @@
+---
+// Helper: renderiza texto con énfasis inline SIN hardcodear markup.
+// Recibe `segments` = array de { t, b?, hi? } desde copy.js.
+//   b  = negrita   ·   hi = resaltado (verde bosque)
+const { segments = [], class: cls = '' } = Astro.props;
+---
+<span class={cls}>
+  {
+    segments.map((s) =>
+      s.b ? (
+        <strong class="font-extrabold text-slow-ink">{s.t}</strong>
+      ) : s.hi ? (
+        <span class="font-semibold text-slow-forest">{s.t}</span>
+      ) : (
+        <>{s.t}</>
+      ),
+    )
+  }
+</span>

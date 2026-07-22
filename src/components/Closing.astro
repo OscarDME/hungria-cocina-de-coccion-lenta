@@ -1,0 +1,56 @@
+---
+// Sección 13 — Cierre "Recepten in kookboek": bloque de pedido final (doc §8).
+// Copy de copy.closing. Mismos 3 productos que el original.
+import { copy } from '../lib/copy.js';
+import { CHECKOUT } from '../lib/checkout.js';
+import CheckoutButton from './CheckoutButton.astro';
+import Icon from './Icon.astro';
+const { closing, hero, inspiration } = copy;
+---
+
+<section
+  aria-labelledby="closing-heading"
+  class="bg-slow-cream pb-16 pt-4 sm:pb-24"
+>
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-slow-forest-dark to-slow-forest px-6 py-12 text-center text-slow-cream shadow-frame sm:px-12 sm:py-16">
+      <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden="true"></div>
+
+      <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/12 ring-1 ring-white/20">
+        <Icon name="book" class="h-6 w-6 text-slow-gold" />
+      </span>
+      <h2 id="closing-heading" class="mx-auto mt-5 max-w-2xl text-balance text-3xl font-black tracking-tight sm:text-[2.7rem]">
+        {closing.heading}
+      </h2>
+
+      <div class="mx-auto mt-8 flex max-w-xl flex-col gap-3">
+        <CheckoutButton
+          href={CHECKOUT.hardcoverNL}
+          label={closing.primaryCta}
+          sub={hero.ctaSecondary.sub}
+          price={inspiration.price}
+          variant="primary"
+          block={true}
+        />
+        <CheckoutButton
+          href={CHECKOUT.hardcoverAbroad}
+          label={closing.primaryCta}
+          sub={hero.ctaTertiary.sub}
+          price={inspiration.price}
+          variant="secondary"
+          block={true}
+        />
+        <CheckoutButton
+          href={CHECKOUT.ebooks}
+          label={closing.altCta}
+          price={inspiration.price}
+          variant="ghost"
+        />
+      </div>
+
+      <p class="mt-6 text-[13px] font-semibold text-slow-cream/80">
+        {hero.pricePerRecipe.pre} <span class="text-slow-gold">{hero.pricePerRecipe.amount}</span> {hero.pricePerRecipe.post}
+      </p>
+    </div>
+  </div>
+</section>

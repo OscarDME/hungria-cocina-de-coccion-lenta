@@ -1,0 +1,47 @@
+---
+// Sección 8 — "Tijd om iedereen omver te blazen met je gerechten!" (doc §8).
+// Fotos de comida SIN texto. Copy de copy.showcase.
+import { Image } from 'astro:assets';
+import img1 from '../assets/showcase-1.webp';
+import img2 from '../assets/showcase-2.webp';
+import { copy } from '../lib/copy.js';
+const { showcase } = copy;
+const imgs = [img1, img2];
+---
+
+<section
+  aria-labelledby="showcase-heading"
+  class="bg-slow-sage/60 py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <h2
+      id="showcase-heading"
+      class="reveal mx-auto max-w-3xl text-balance text-center text-3xl font-black tracking-tight text-slow-ink sm:text-[2.6rem]"
+    >
+      {showcase.heading}
+    </h2>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      {
+        showcase.items.map((it, i) => (
+          <figure class="reveal group relative overflow-hidden rounded-[1.6rem] shadow-frame ring-1 ring-slow-ink/5">
+            <Image
+              src={imgs[i]}
+              alt={it.imageAlt}
+              widths={[420, 640, 820]}
+              sizes="(min-width:640px) 44vw, 92vw"
+              formats={['avif', 'webp']}
+              quality={82}
+              loading="lazy"
+              class="aspect-[5/4] h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slow-ink/80 via-slow-ink/10 to-transparent"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-6">
+              <span class="text-[19px] font-black text-white drop-shadow sm:text-2xl">{it.title}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+// Doc §5: Layout global. Poppins self-hosted, Pixel en <head>, HotmartSrcListener
+// en <body>. Skip-link + meta SEO completo. TODO el texto sale de copy.js.
+
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import '../styles/global.css';
+
+import { copy } from '../lib/copy.js';
+import FacebookPixel from '../components/FacebookPixel.astro';
+import HotmartSrcListener from '../components/HotmartSrcListener.astro';
+import { getImage } from 'astro:assets';
+import heroMockup from '../assets/hero-mockup.webp';
+
+const { metadata, a11y } = copy;
+
+// Preload del LCP (doc §9-10): la imagen del hero es el LCP. Coincide en
+// widths/sizes/format/quality con el <Image> del Hero para reutilizar el asset.
+const heroPreload = await getImage({
+  src: heroMockup,
+  widths: [440, 680, 900],
+  sizes: '(min-width:1024px) 480px, 88vw',
+  format: 'webp',
+  quality: 85,
+});
+---
+
+<!doctype html>
+<html lang={metadata.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Favicon inline (cero requests) — olla terracota */}
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23d2542b'/></svg>"
+    />
+
+    {/* Preload del LCP (doc §9-10) */}
+    <link
+      rel="preload"
+      as="image"
+      href={heroPreload.src}
+      imagesrcset={heroPreload.srcSet.attribute}
+      imagesizes="(min-width:1024px) 480px, 88vw"
+      fetchpriority="high"
+    />
+
+    <title>{metadata.title}</title>
+    <meta name="description" content={metadata.description} />
+    <link rel="canonical" href={metadata.canonical} />
+
+    <meta property="og:type" content={metadata.ogType} />
+    <meta property="og:title" content={metadata.title} />
+    <meta property="og:description" content={metadata.description} />
+    <meta property="og:url" content={metadata.canonical} />
+    <meta property="og:image" content={metadata.ogImage} />
+    <meta property="og:site_name" content={metadata.siteName} />
+    <meta property="og:locale" content={metadata.ogLocale} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metadata.title} />
+    <meta name="twitter:description" content={metadata.description} />
+    <meta name="twitter:image" content={metadata.ogImage} />
+
+    {/* Kill-all-hashes (doc §5): limpia el hash de la URL antes de cualquier tracking */}
+    <script is:inline>
+      (function () {
+        if (window.location.hash) {
+          try {
+            history.replaceState(
+              null,
+              '',
+              window.location.pathname + window.location.search,
+            );
+          } catch (_) {
+            /* no-op */
+          }
+        }
+      })();
+    </script>
+
+    {/* Pixel oficial de Meta — en <head>, antes de cualquier interactividad */}
+    <FacebookPixel />
+
+    <slot name="head" />
+  </head>
+  <body class="bg-slow-cream text-slow-charcoal antialiased font-sans">
+    <a href="#main" class="skip-link">{a11y.skipToContent}</a>
+
+    {/* Captura de parámetros src/fbclid (doc §13) */}
+    <HotmartSrcListener />
+
+    <slot />
+  </body>
+</html>

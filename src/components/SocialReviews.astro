@@ -1,0 +1,51 @@
+---
+// Sección 7 — "Wat ze op social media zeggen" (doc §8). Antes eran capturas de
+// WhatsApp/Facebook/Instagram; aquí tarjetas de código. Copy de copy.socialReviews.
+import { copy } from '../lib/copy.js';
+import Icon from './Icon.astro';
+const { socialReviews } = copy;
+---
+
+<section
+  aria-labelledby="social-heading"
+  class="bg-slow-cream py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2
+        id="social-heading"
+        class="mt-3 text-balance text-3xl font-black tracking-tight text-slow-ink sm:text-[2.5rem]"
+      >
+        {socialReviews.heading}
+      </h2>
+    </div>
+
+    <div class="mt-10 gap-5 [column-gap:1.25rem] sm:columns-2 lg:columns-3">
+      {
+        socialReviews.items.map((r) => (
+          <figure class="reveal mb-5 break-inside-avoid rounded-3xl border border-slow-cream-deep bg-white p-6 shadow-card">
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-slow-forest/10 text-[15px] font-black uppercase text-slow-forest-dark"
+                aria-hidden="true"
+              >
+                {r.name.trim().charAt(0)}
+              </span>
+              <div class="min-w-0">
+                <figcaption class="truncate text-[14px] font-bold text-slow-ink">{r.name}</figcaption>
+                <span class="inline-flex items-center gap-1 text-[11.5px] font-semibold text-slow-moss">
+                  <Icon name="chat" class="h-3.5 w-3.5" /> {r.source}
+                </span>
+              </div>
+              <Icon name="heart" class="ml-auto h-5 w-5 text-slow-rose" />
+            </div>
+            <blockquote class="mt-4 text-[14.5px] leading-relaxed text-slow-ink-soft">
+              <Icon name="quote" class="mb-1 h-5 w-5 text-slow-sage-deep" />
+              {r.quote}
+            </blockquote>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

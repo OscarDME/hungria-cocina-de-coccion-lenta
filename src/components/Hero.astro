@@ -1,0 +1,136 @@
+---
+// Sección 1 — Hero (doc §8.2). H1 + prueba social + 3 CTA de producto + mockup
+// del libro (LCP). Todo el texto viene de copy.js.
+import { Image } from 'astro:assets';
+import heroMockup from '../assets/hero-mockup.webp';
+import { copy } from '../lib/copy.js';
+import { CHECKOUT } from '../lib/checkout.js';
+import CheckoutButton from './CheckoutButton.astro';
+import RichText from './RichText.astro';
+import StarRating from './StarRating.astro';
+import Icon from './Icon.astro';
+
+const { hero } = copy;
+---
+
+<section
+  aria-labelledby="hero-heading"
+  class="relative overflow-hidden bg-slow-cream"
+>
+  {/* decoración de fondo */}
+  <div
+    class="pointer-events-none absolute inset-0 -z-10"
+    aria-hidden="true"
+  >
+    <div class="absolute -left-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-slow-sage/70 blur-3xl"></div>
+    <div class="absolute right-[-8rem] top-32 h-96 w-96 rounded-full bg-slow-rose-soft/60 blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:py-20">
+    {/* Columna texto */}
+    <div class="animate-fade-down">
+      <h1
+        id="hero-heading"
+        class="text-balance font-black leading-[0.98] tracking-tight text-slow-ink text-[2.7rem] sm:text-6xl lg:text-[4.2rem]"
+      >
+        {hero.title}
+      </h1>
+
+      <p class="mt-5 max-w-xl text-pretty text-[17px] font-medium leading-relaxed text-slow-ink-soft sm:text-[19px]">
+        {hero.subtitle}
+      </p>
+
+      {/* Prueba social */}
+      <div class="mt-6 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-slow-sage-deep bg-white/70 px-4 py-2 shadow-soft">
+        <StarRating value={hero.socialProof.stars} class="h-[18px] w-[18px]" />
+        <span class="text-[14px] text-slow-ink-soft">
+          <strong class="font-extrabold text-slow-ink">{hero.socialProof.strong}</strong>{hero.socialProof.rest}
+          <span class="font-extrabold text-slow-ink"> {hero.socialProof.stars}★</span>
+        </span>
+      </div>
+
+      {/* CTAs de producto */}
+      <div class="mt-8 flex flex-col gap-3 sm:max-w-md">
+        <CheckoutButton
+          href={CHECKOUT.ebooks}
+          label={hero.ctaPrimary.label}
+          sub={hero.ctaPrimary.sub}
+          price={copy.inspiration.price}
+          variant="primary"
+          block={true}
+        />
+        <div class="grid gap-3 sm:grid-cols-2">
+          <CheckoutButton
+            href={CHECKOUT.hardcoverNL}
+            label={hero.ctaSecondary.label}
+            sub={hero.ctaSecondary.sub}
+            price={copy.inspiration.price}
+            variant="secondary"
+            block={true}
+          />
+          <CheckoutButton
+            href={CHECKOUT.hardcoverAbroad}
+            label={hero.ctaTertiary.label}
+            sub={hero.ctaTertiary.sub}
+            price={copy.inspiration.price}
+            variant="secondary"
+            block={true}
+          />
+        </div>
+      </div>
+
+      <p class="mt-5 max-w-xl text-[13.5px] italic leading-relaxed text-slow-moss">
+        <RichText segments={hero.noteRich} />
+      </p>
+    </div>
+
+    {/* Columna mockup del libro (LCP) */}
+    <div class="relative mx-auto w-full max-w-[420px] lg:mx-0 lg:ml-auto">
+      <div class="relative animate-float [perspective:1600px]">
+        {/* sombra base */}
+        <div class="absolute -bottom-6 left-1/2 h-8 w-[82%] -translate-x-1/2 rounded-[50%] bg-slow-ink/20 blur-2xl"></div>
+
+        <div class="relative rotate-[-2.5deg] rounded-[1.4rem] shadow-frame transition-transform duration-500 hover:rotate-0">
+          {/* lomo */}
+          <span class="absolute left-0 top-0 z-10 h-full w-3.5 rounded-l-[1.4rem] bg-gradient-to-b from-slow-forest-dark via-slow-forest to-slow-forest-dark"></span>
+          {/* portada */}
+          <div class="relative overflow-hidden rounded-[1.4rem] ring-1 ring-slow-ink/10">
+            <Image
+              src={heroMockup}
+              alt={hero.imageAlt}
+              widths={[440, 680, 900]}
+              sizes="(min-width:1024px) 480px, 88vw"
+              formats={['avif', 'webp']}
+              quality={85}
+              loading="eager"
+              fetchpriority="high"
+              class="aspect-[3/4] h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slow-ink/90 via-slow-ink/25 to-transparent"></div>
+
+            {/* título en la portada (texto real, no imagen) */}
+            <div class="absolute inset-x-0 top-0 flex justify-end p-4">
+              <span class="rounded-full bg-slow-gold px-3 py-1 text-[11px] font-black uppercase tracking-wide text-slow-ink shadow-soft">
+                {hero.book.badge}
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+              <p class="eyebrow text-slow-gold">{hero.book.author}</p>
+              <p class="mt-1 font-black uppercase leading-none tracking-tight text-[2.1rem] drop-shadow">
+                {hero.book.title}
+              </p>
+              <p class="mt-1 font-serif text-lg italic text-white/90">{hero.book.subtitle}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* pastilla precio /recept */}
+        <div class="absolute -right-2 top-8 rotate-6 rounded-2xl bg-white px-4 py-2.5 text-center shadow-card sm:-right-5">
+          <span class="block text-[10px] font-bold uppercase tracking-wide text-slow-moss">{hero.pricePerRecipe.pre}</span>
+          <span class="text-xl font-black text-slow-terracotta">{hero.pricePerRecipe.amount}</span>
+          <span class="block text-[11px] font-semibold text-slow-ink-soft">{hero.pricePerRecipe.post}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

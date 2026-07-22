@@ -1,0 +1,15 @@
+---
+// Fila de estrellas (doc §8: SVG inline). `value` = nº de estrellas llenas.
+import Icon from './Icon.astro';
+import { copy } from '../lib/copy.js';
+const { value = 5, max = 5, class: cls = 'w-4 h-4' } = Astro.props;
+const filled = Math.round(value);
+const stars = Array.from({ length: max }, (_, i) => i < filled);
+---
+<span
+  class="inline-flex items-center gap-0.5 text-slow-gold"
+  role="img"
+  aria-label={`${value} / ${max} ${copy.a11y.starsLabel}`}
+>
+  {stars.map((on) => <Icon name="star" class={`${cls} ${on ? '' : 'text-slow-cream-deep'}`} />)}
+</span>

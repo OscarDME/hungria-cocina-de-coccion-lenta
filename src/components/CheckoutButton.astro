@@ -1,0 +1,107 @@
+---
+// CTA de checkout reutilizable (doc §8.3 + §13.3).
+// - href  : URL base del checkout (config en src/lib/checkout.js, NO copy)
+// - label : texto del botón (viene de copy.js)
+// - sub   : subtítulo opcional (viene de copy.js)
+// - price : precio para el evento begin_checkout (opcional, de copy.js)
+// - variant: 'primary' | 'secondary' | 'ghost'
+// La lógica de parámetros (URL > localStorage) y analytics vive en el bloque
+// script de abajo y actúa sobre TODOS los [data-checkout] de la página (1x).
+const {
+  href,
+  label,
+  sub = '',
+  price = '',
+  variant = 'primary',
+  block = false,
+  id,
+} = Astro.props;
+
+const base =
+  'group relative inline-flex flex-col items-center justify-center overflow-hidden rounded-2xl font-extrabold leading-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slow-forest/30 cursor-pointer text-center';
+
+const variants = {
+  primary:
+    'bg-gradient-to-br from-slow-terracotta to-slow-terracotta-dark text-white px-7 py-4 text-[15px] sm:text-[17px] shadow-cta hover:-translate-y-0.5 hover:shadow-cta-hover',
+  secondary:
+    'bg-white/90 text-slow-ink px-7 py-4 text-[15px] sm:text-[16px] border-2 border-slow-sage-deep hover:border-slow-forest hover:bg-white shadow-soft hover:-translate-y-0.5',
+  ghost:
+    'bg-transparent text-slow-forest-dark px-4 py-2 text-[14px] underline decoration-slow-forest/40 underline-offset-4 hover:decoration-slow-forest',
+};
+
+const cls = `${base} ${variants[variant] || variants.primary} ${block ? 'w-full' : ''}`;
+---
+
+<a
+  href={href}
+  id={id}
+  data-checkout
+  data-checkout-base={href}
+  data-offer-price={price}
+  class={cls}
+>
+  {
+    variant === 'primary' && (
+      <span
+        class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent animate-sweep"
+        aria-hidden="true"
+      />
+    )
+  }
+  <span class="relative">{label}</span>
+  {sub && <span class="relative mt-0.5 text-[12px] font-medium opacity-80">({sub})</span>}
+</a>
+
+<script>
+  // Doc §13.3: prioridad URL del navegador > localStorage. Se ejecuta una vez
+  // y cablea todos los botones [data-checkout] de la página.
+  (function () {
+    function getParams() {
+      let src = '';
+      let fbclid = '';
+      try {
+        const u = new URL(location.href);
+        src = u.searchParams.get('src') || localStorage.getItem('hotmart_src') || '';
+        fbclid = u.searchParams.get('fbclid') || localStorage.getItem('hotmart_fbclid') || '';
+      } catch (_) {
+        /* no-op */
+      }
+      return { src, fbclid };
+    }
+
+    function buildUrl(base) {
+      const { src, fbclid } = getParams();
+      if (!src && !fbclid) return base;
+      try {
+        const url = new URL(base);
+        if (src) url.searchParams.set('src', src);
+        if (fbclid) url.searchParams.set('fbclid', fbclid);
+        return url.toString();
+      } catch (_) {
+        return base;
+      }
+    }
+
+    const buttons = document.querySelectorAll('[data-checkout]');
+    buttons.forEach((btn) => {
+      const base = btn.getAttribute('data-checkout-base');
+      if (base) btn.setAttribute('href', buildUrl(base));
+
+      btn.addEventListener('click', () => {
+        try {
+          const raw = btn.getAttribute('data-offer-price') || '';
+          const cleaned = String(raw).replace(/[^\d.,]/g, '').replace(',', '.');
+          const price = parseFloat(cleaned);
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'begin_checkout',
+            value: Number.isFinite(price) ? price : 0,
+            currency: 'EUR',
+          });
+        } catch (_) {
+          /* no-op */
+        }
+      });
+    });
+  })();
+</script>
