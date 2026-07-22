@@ -1,329 +1,329 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Doc §7: TODO el texto visible de la landing sale de este archivo.
 // Los componentes solo leen de aquí; nunca tienen texto propio.
-// Idioma: neerlandés (nl) — copy idéntico a la página original.
+// Idioma: húngaro (hu) — transcreación adaptada al mercado húngaro.
 // Convención "*Rich": array de segmentos {t, b?, hi?} para énfasis inline
 // (b = negrita, hi = resaltado verde). Se renderiza con RichText.astro.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const copy = {
   metadata: {
-    lang: 'nl',
-    title: 'Het beste 5⭐ slowcooker kookboek met 141 fantastische recepten',
+    lang: 'hu',
+    title: 'A legjobb 5⭐ lassúfőző receptkönyv 141 fantasztikus recepttel',
     description:
-      'Zonder kookstress rond 17.00 aan tafel? 141 heerlijke, gezonde slowcooker recepten met gewone supermarkt-ingrediënten en een korte voorbereiding. 16.500+ gezinnen koken mee en geven gemiddeld 5 sterren.',
-    canonical: 'https://lassu-fozes.crearis.online',
+      'Stresszmentes vacsorát szeretnél pontban este 7-re? 141 ízletes, egészséges lassúfőző recept mindennapi bolti alapanyagokból, gyors előkészülettel. Több mint 16 500 család főz már ezekből, átlagosan 5 csillagos értékeléssel.',
+    canonical: 'https://bavno-gotvene.crearis.online',
     ogImage: '/og-cover.webp',
     ogType: 'website',
-    ogLocale: 'nl_NL',
-    siteName: 'Slowcooker kookboek',
+    ogLocale: 'hu_HU',
+    siteName: 'Lassúfőző Receptkönyv',
   },
 
   a11y: {
-    skipToContent: 'Ga naar hoofdinhoud',
-    reviewsRegion: 'Reviews van kopers',
-    valuePropsRegion: 'Voordelen in het kort',
-    footerNav: 'Footer',
-    starsLabel: 'sterren',
+    skipToContent: 'Ugrás a fő tartalomra',
+    reviewsRegion: 'Vásárlói vélemények',
+    valuePropsRegion: 'Előnyök röviden',
+    footerNav: 'Lábléc navigáció',
+    starsLabel: 'csillag',
   },
 
   hero: {
-    title: 'Slowcooker kookboek',
-    subtitle: 'Zonder kookstress aan tafel aanschuiven? Dat wil toch iedereen!',
+    title: 'Lassúfőző Receptkönyv',
+    subtitle: 'Stressz és kapkodás nélkül leülni az asztalhoz? Mindenki erről álmodik!',
     socialProof: {
-      strong: '16.500+ gezinnen',
-      rest: ' koken met deze recepten en geven ze gemiddeld',
+      strong: 'Több mint 16 500 család',
+      rest: ' főz már ezekből a receptekből, és az átlagos értékelésük',
       stars: 5,
     },
-    ctaPrimary: { label: 'Bestel als e-books (pdf)', sub: 'goedkoper én gelijk in je mail' },
-    ctaSecondary: { label: 'Bestel hardcover kookboek', sub: 'levering Nederland' },
-    ctaTertiary: { label: 'Bestel hardcover kookboek', sub: 'levering Buitenland' },
+    ctaPrimary: { label: 'Rendelés e-könyvként (PDF)', sub: 'kedvezőbb ár, azonnal a postaládádban' },
+    ctaSecondary: { label: 'Rendelés nyomtatott könyvként', sub: 'magyarországi kiszállítással' },
+    ctaTertiary: { label: 'Rendelés nyomtatott könyvként', sub: 'külföldi kiszállítással' },
     noteRich: [
-      { t: 'In het hardcover kookboek staan dezelfde recepten als in e-book deel 1 t/m deel 4 (' },
-      { t: '141 recepten totaal', b: true },
-      { t: '). De recepten uit e-book deel 5 en deel 6 (' },
-      { t: '61 nieuwe recepten', b: true },
-      { t: ') zijn alleen digitaal beschikbaar.' },
+      { t: 'A nyomtatott könyv ugyanazokat a recepteket tartalmazza, mint az 1-4. e-könyvek (' },
+      { t: 'összesen 141 recept', b: true },
+      { t: '). Az 5. és 6. e-könyvek receptjei (' },
+      { t: '61 új recept', b: true },
+      { t: ') csak digitális formátumban érhetők el.' },
     ],
-    pricePerRecipe: { pre: 'Slechts', amount: '€ 0,38', post: 'cent /recept' },
+    pricePerRecipe: { pre: 'Mindössze', amount: '21 Ft', post: 'receptenként' },
     book: {
-      title: 'Slowcooken',
-      subtitle: 'Simpel & Smaakvol',
-      author: 'Joyce van de Pas',
-      badge: '141 recepten',
-      spine: 'SLOWCOOKEN',
+      title: 'Lassú Főzés',
+      subtitle: 'Egyszerűen és Finoman',
+      author: 'Szabó Judit',
+      badge: '141 recept',
+      spine: 'LASSÚ FŐZÉS',
     },
-    imageAlt: 'Slowcooker gerecht met mals stoofvlees en verse groenten, klaar om te serveren',
+    imageAlt: 'Lassúfőzőben készült szaftos marhahús friss zöldségekkel, tálalásra készen',
   },
 
   valueProps: [
     {
       icon: 'pot',
-      title: 'Om 17.00 zó aan tafel',
-      text: 'Met ingrediënten uit de supermarkt én duidelijke uitleg.',
+      title: 'A vacsora pontban 19:00-kor kész',
+      text: 'Hétköznapi bolti alapanyagokból dolgozunk, világos, pontos és egyszerű utasításokkal.',
     },
     {
       icon: 'clock',
-      title: 'Korte voorbereiding',
-      text: 'In een handomdraai het eten op tafel.',
+      title: 'Minimális előkészület',
+      text: 'Szó szerint pillanatok alatt az asztalra varázsolhatod a család kedvenc ételét.',
     },
     {
       icon: 'chef',
-      title: 'Koken als een chefkok',
-      text: 'Restaurant-like, maar dan zelf gemaakt!',
+      title: 'Főzz úgy, mint egy igazi séf',
+      text: 'Olyan ízélmény, mintha egy elegáns étteremben lennél, de mégis otthon készítetted!',
     },
   ],
 
   story: {
-    heading: 'Stressvrij avondeten',
+    heading: 'Vacsora idegeskedés nélkül',
     paragraphs: [
-      'Heb jij gebrek aan inspiratie als je het avondeten moet bedenken?',
-      'En tijdens de avondspits tijd tekort om lekker, gevarieerd én gezond te koken?',
-      'Ik herken die uitdagingen zo goed!',
+      'Veletek is előfordul, hogy teljesen leblokkoltok, amikor ki kell találni, mi legyen a vacsora?',
+      'A munka utáni őrületben meg egyszerűen nem marad idő valami finomat, változatosat és egészségeset összedobni?',
+      'Annyira megértem ezt!',
     ],
     highlightRich: [
-      { t: 'Maar tegenwoordig zet ik binnen no-time ' },
-      { t: 'zalige slowcooker gerechten', hi: true },
-      { t: ' op tafel én ' },
-      { t: 'bespaar veel tijd', hi: true },
+      { t: 'De ma már, a lassúfőzőnek hála, pillanatok alatt ' },
+      { t: 'elképesztően finom ételeket', hi: true },
+      { t: ' tálalok, és közben ' },
+      { t: 'rengeteg időt spórolok', hi: true },
       { t: '!' },
     ],
-    question: 'Ook stressvrij rond 17.00 aan tafel?',
-    answer: 'Dan zijn mijn gezonde én lekkere recepten (141 in totaal) een uitkomst voor jou!',
-    closer: "Gewoon 's avonds gelijk lekker aan tafel aanschuiven, wie wil dat nu niet?",
-    imageAlt: 'Dampende slowcooker stoofpot met groenten, vers geserveerd op tafel',
+    question: 'Te is nyugodt vacsorára vágysz, pontban 19:00-kor?',
+    answer: 'Akkor az én 141 egészséges és ízletes receptem igazi megváltás lesz számodra!',
+    closer: 'Csak leültök az asztalhoz, és élvezitek a finom falatokat – ki ne vágyna erre?',
+    imageAlt: 'Lassúfőzőből frissen tálalt, gőzölgő, ízletes zöldséges ragu',
   },
 
   buyerReviews: {
-    heading: 'Wat andere kopers zeggen:',
+    heading: 'Ezt mondják azok, akik már megvették:',
     items: [
       {
-        name: 'Mir',
+        name: 'Mária',
         source: 'Trustpilot',
         rating: 5,
-        title: 'Ik heb onlangs alle drie de ebooks…',
+        title: 'Nemrég megvettem mindhárom e-könyvet…',
         quote:
-          'Ik heb onlangs alle drie de ebooks gekocht en ben er helemaal weg van! Ik heb er al meerdere keren recepten uit gekookt in mijn crock pot. Het is allemaal even lekker en makkelijk. Ik kook graag voor meerdere dagen en dat gaat super. De recepten zijn duidelijk en ook de bereidingstijd etc klopt goed! Ik wacht op nummer 4!',
+          'Megvettem az összes e-könyvet, és egyenesen imádom! Már jó párszor főztem belőlük a Crock-Potomban. Minden olyan egyszerűen és finoman sikerül. Szeretek több napra előre főzni, és erre is szuperül működik. A receptek nagyon érthetőek, a főzési idők pedig hajszálpontosak! Alig várom a 4. részt!',
       },
       {
-        name: 'roelina Watzema-Postma',
+        name: 'Tóth Réka',
         source: 'Google',
         rating: 5,
-        title: 'Zeker de moeite waard!',
+        title: 'Mindenképp megéri!',
         quote:
-          'Ik heb paar weken terug het slowcooker boek gekocht en wat werd ik er blij van toen ik het boek open sloeg. Het zit boordevol lekkere recepten, het staat goed aangegeven welke stappen je moet volgen en hoelang het in de slowcooker maken. Je vindt ook alle recepten voorin het wordt super aangeven. Zeker de moeite waard om het boek te kopen!!',
+          'Pár hete vettem meg a könyvet, és amint kinyitottam, egyből mosolyogni kezdtem. Tele van szuper receptekkel, a lépések tökéletesen vannak elmagyarázva, ahogy az is, mennyi időre kell a lassúfőzőbe tenni az ételt. Az elején van egy szuper praktikus receptlista. Határozottan megér minden fillért!!',
       },
       {
-        name: 'Annette Knijff',
+        name: 'Németh Anikó',
         source: 'Trustpilot',
         rating: 5,
-        title: 'Het 3e kookboek van Joyce…',
+        title: 'Judit harmadik könyve…',
         quote:
-          'Het 3e kookboek van Joyce natuurlijk ook gekocht en weer nog meer heerlijke recepten! Haar recepten zijn lekker, overzichtelijk, verse ingrediënten, verrassend! Ik krijg er veel inspiratie van en nog meer plezier om te koken!',
+          'Természetesen Judit harmadik könyvét is beszereztem, és ismét el vagyok bűvölve! A receptjei iszonyatosan finomak, átláthatóak, friss alapanyagokból dolgoznak, és csomó meglepő ízkombináció van bennük! Hatalmas inspirációt ad, és most még nagyobb örömmel állok neki főzni!',
       },
       {
-        name: 'Luenda',
+        name: 'Tímea',
         source: 'Trustpilot',
         rating: 4,
-        title: 'Heerlijke recepten',
+        title: 'Szuper receptek',
         quote:
-          'Heerlijke recepten. Eerste recept was gelijk goed gelukt, met andere kookboeken was het niet altijd gelijk goed. Deze kookboeken zijn echt een aanrader.',
+          'Nagyon finom dolgok vannak benne. Már az első receptem is tökéletesen sikerült, ami más könyveknél nem mindig van így elsőre. Két kézzel ajánlom.',
       },
       {
-        name: 'H V',
+        name: 'Gábor V.',
         source: 'Google',
         rating: 5,
-        title: 'Het beste boek over slowcooken',
+        title: 'A legjobb könyv a lassú főzéshez',
         quote:
-          'Heb het kookboek voor mijzelf gekocht en er staan enorm veel lekkere maar makkelijke recepten in. Stap voor stap uitgelegd met eenvoudige ingrediënten. En het lukt altijd! Op het gebied van slowcooken is dit het beste boek dat ik ben tegengekomen! Een aanrader!',
+          'Magamnak vettem, és rengeteg egyszerű, de szuper finom recept van benne. Minden lépésről lépésre van elmagyarázva, könnyen beszerezhető hozzávalókkal. És tényleg mindig sikerül! Ez a legjobb lassúfőző könyv, amivel eddig találkoztam. Erősen ajánlom!',
       },
       {
-        name: 'Melanie van Dijk',
+        name: 'Varga Melinda',
         source: 'Trustpilot',
         rating: 5,
-        title: 'Heb deel 1 en 2 gekocht van slowcooker…',
+        title: 'Megvettem az 1. és 2. részt…',
         quote:
-          'Heb deel 1 en 2 gekocht van slowcooker recepten wat een leuk recepten en lekker ik raad iedereen aan om deze te kopen en proberen hartstikke leuk!',
+          'Megrendeltem az első két részt, és te jó ég, micsoda receptek vannak bennük! Olyan finomak, mindenkinek ajánlom, hogy vegye meg és próbálja ki, hatalmas élmény!',
       },
     ],
   },
 
   inspiration: {
-    heading: 'Nooit meer inspiratie gebrek',
-    subheading: 'Herken jij dit?',
+    heading: 'Vége a „mit főzzek ma?” dilemmának',
+    subheading: 'Ismerős a helyzet?',
     paragraphs: [
-      'Je struint uren op internet naar het perfecte gerecht om in de slowcooker te maken.... je denkt iets gevonden te hebben en het uiteindelijke resultaat? Een waterig gerecht met weinig smaak.',
-      'Je bent niet de enige!',
-      'Maar het kan anders.',
+      'Órákig bújod a netet, hogy megtaláld a tökéletes ételt a lassúfőzőbe... azt hiszed, találtál valamit, és a végeredmény? Egy íztelen, vizenyős trutyi.',
+      'Nem vagy egyedül!',
+      'De van más megoldás is.',
     ],
     highlight:
-      'Met dit kookboek hoef je maar 2x per jaar hetzelfde te eten, zoveel variatie heb je op je aanrecht liggen.',
-    cta: 'Ja, geef mij direct al die inspiratie!',
-    priceLabel: 'Nú voor',
-    price: '€ 54,95',
+      'Ezzel a receptkönyvvel egy évben jó, ha kétszer kell ugyanazt enned – ekkora változatosság költözik a konyhádba.',
+    cta: 'Igen, kérem az összes receptet, azonnal!',
+    priceLabel: 'Most csak ennyiért:',
+    price: '2990 Ft',
   },
 
   benefits: {
-    heading: 'Jouw voordelen op een rijtje',
+    heading: 'Az előnyök röviden',
     items: [
       {
-        title: "176 pagina's dik",
-        text: "Vol heerlijke recepten (141 stuks!), maar ook met extra tips, kooktijden en meer slowcooker informatie.",
+        title: '14 napos garancia',
+        text: 'Kockázatmentes vásárlás. 14 napos, 100%-os pénzvisszafizetési garanciát vállalok, ha nem vagy elégedett.',
       },
       {
-        title: 'Gezond en smaakvol',
-        text: 'Gerechten met maximale smaak én op een gezonde basis met veel groenten zonder pakjes en zakjes.',
+        title: 'Egészséges és finom',
+        text: 'Maximális ízélményt nyújtó ételek egészséges alapokon, rengeteg zöldséggel, mesterséges félkész termékek nélkül.',
       },
       {
-        title: 'Gewone ingrediënten',
-        text: 'Alle ingrediënten voor mijn recepten zijn gewoon in de supermarkt verkrijgbaar.',
+        title: 'Hétköznapi alapanyagok',
+        text: 'A receptjeimhez szükséges összes hozzávalót minden gond nélkül megtalálod a sarki szupermarketben.',
       },
       {
-        title: 'Korte voorbereiding',
-        text: 'Duidelijke stap-voor-stap uitleg en een korte voorbereidingstijd: zet jij zonder veel werk een heerlijke maaltijd op tafel.',
+        title: 'Gyors előkészület',
+        text: 'A világos, lépésről lépésre követhető utasításokkal anélkül varázsolhatsz szuper vacsorát az asztalra, hogy órákat állnál a tűzhely mellett.',
       },
     ],
     categories: [
-      'Heerlijke stoofvlees recepten',
-      'Verrassende soepen',
-      "Zalig comfort food zoals risotto's, maar ook lekkere pasta-, kip- en visgerechten",
+      'Omlós és szaftos marhahúsos ételek',
+      'Meglepően finom, krémes levesek',
+      'Igazi házias komfortételek, mint a rizottó, de elképesztő tésztás, csirkés és halas receptek is',
     ],
   },
 
   socialReviews: {
-    heading: 'Wat ze op social media zeggen',
+    heading: 'Ezt mondják az olvasók a közösségi médiában',
     items: [
       {
-        name: 'Carola Van de Steeg',
+        name: 'Farkas Katalin',
         source: 'WhatsApp',
         quote:
-          'Ja ben er echt zo blij mee, de witlof was echt heerlijk, de boerenkool zo lekker, billetjes in het gras echt een topper. Ik hou wel van de Hollandse pot. Maandag maak ik de chili con carne met een gepofte zoete aardappel.',
+          'Annyira boldog vagyok, a cikória isteni lett, a fodros kel is, a kolbászos recept meg abszolút kedvenc. Imádom a házias ízeket. Hétfőn chili con carne-t csinálok sült édesburgonyával.',
       },
       {
-        name: 'Marjon Spaandonk',
+        name: 'Kiss Margit',
         source: 'WhatsApp',
         quote:
-          'Vandaag de Orzo weer op, die is zo ontzettend lekker, ik ben blij met je recepten!',
+          'Ma megint orzót ettünk, elképesztően finom lesz, szinte újjászülettem a receptjeiddel!',
       },
       {
-        name: 'Alice Bijl - Roeters',
+        name: 'Balogh Alíz',
         source: 'Facebook',
         quote:
-          'Het is ongelooflijk lekker!! Ik heb nog wat sambal toegevoegd. Mijn man vind het restaurant waardig!!',
+          'Hihetetlenül finom!! Tettem bele egy kis csípőset is a pikantéria kedvéért. A férjem szerint egy étteremben is megállná a helyét!!',
       },
       {
-        name: 'Katrien Gorp',
+        name: 'Horváth Kata',
         source: 'Facebook',
         quote:
-          'Gisteren het boek binnen gekregen en vandaag de tomatensoep gemaakt. Goedgekeurd door mijn jongens dus die komt vaker op het menu.',
+          'Tegnap megkaptam a könyvet, és ma egyből megcsináltam a paradicsomlevest. A fiaim 100%-osan rábólintottak, szóval biztosan bekerül a rendszeres menübe.',
       },
       {
-        name: 'Carla Vilé',
+        name: 'Molnár Klára',
         source: 'Facebook',
-        quote: 'Vandaag de soto heerlijk!!!!!',
+        quote: 'Ma csináltam meg a soto levest, valami brutálisan jó!!!!!',
       },
       {
-        name: 'henkemifsud',
+        name: 'gabor_m',
         source: 'Instagram',
-        quote: 'Mooi boek met heerlijke recepten.',
+        quote: 'Nagyon jó könyv, szuper receptekkel.',
       },
     ],
   },
 
   showcase: {
-    heading: 'Tijd om iedereen omver te blazen met je gerechten!',
+    heading: 'Ideje, hogy bezsebeld az elismeréseket otthon!',
     items: [
-      { title: 'Heerlijke stoofvlees recepten', imageAlt: 'Mals stoofvlees uit de slowcooker met wortels en kruiden' },
-      { title: 'Heerlijke soepen', imageAlt: 'Verse, romige soep bereid in de slowcooker' },
+      { title: 'Szájban olvadó húsok', imageAlt: 'Lassúfőzőben készült omlós hús sárgarépával és zöldfűszerekkel' },
+      { title: 'Fantasztikus levesek', imageAlt: 'Friss, krémleves lassúfőzőben elkészítve' },
     ],
   },
 
   finalCta: {
-    kicker: 'Slowcooker chefkok worden met gemak!',
-    heading: 'Laat de slowcooker je keuken veroveren!',
-    lead: 'Ga voor heerlijke, gezonde én gemakkelijke maaltijden.',
+    kicker: 'Legyél a lassú főzés mestere, minden erőfeszítés nélkül!',
+    heading: 'Engedd, hogy a lassúfőző átalakítsa a konyhádat!',
+    lead: 'Válaszd a finom, egészséges és egyszerű házias ételeket.',
     paragraphs: [
-      'Verander je kookervaring met mijn slowcooker recepten. Ontdek zorgvuldig geselecteerde gerechten, handige tips en trucs, en geniet van smaakvolle maaltijden zonder gedoe.',
-      'Laat je vandaag nog inspireren en bespaar zeeën van tijd met zoeken naar recepten én het koken ervan!',
+      'Változtasd meg a főzési szokásaidat a receptjeimmel. Fedezz fel gondosan válogatott ételeket, okos trükköket, és élvezd a finom vacsorákat felesleges felhajtás nélkül.',
+      'Inspirálódj még ma, és spórold meg magadnak a receptek utáni órákig tartó kutatást és a tűzhely melletti állást!',
     ],
-    cta: 'Bestel nu dit prachtige kookboek',
-    ctaNote: 'Nooit meer zoeken naar lekkere recepten!',
-    imageAlt: 'Het slowcooker kookboek met een dampend gerecht ernaast',
+    cta: 'Rendeld meg ezt a lenyűgöző könyvet most',
+    ctaNote: '14 napos garancia! Soha többé nem kell azon törnöd a fejed, hogy mit főzz!',
+    imageAlt: 'A lassúfőző receptkönyv egy frissen készült, gőzölgő étel mellett',
   },
 
   ratings: {
-    heading: 'Reviews',
+    heading: 'Értékelés',
     items: [
       {
         platform: 'Trustpilot',
         score: '4,8',
         max: '5',
         count: '208',
-        countLabel: 'reviews',
-        note: 'Geclaimd profiel',
+        countLabel: 'vélemény',
+        note: 'Ellenőrzött profil',
       },
       {
         platform: 'Google',
         score: '4,8',
         max: '5',
         count: '89',
-        countLabel: 'reviews',
-        note: 'Mediabedrijf in Schijndel',
+        countLabel: 'vélemény',
+        note: 'Médiaügynökség',
       },
     ],
   },
 
   testimonials: {
-    heading: 'Dit zeggen anderen over mijn recepten',
+    heading: 'További vélemények a receptjeimről',
     items: [
       {
-        title: 'Iedereen eet zijn bord leeg!',
+        title: 'Mindenki az utolsó falatig megeszi az adagját!',
         quote:
-          'Sinds ik met jouw kookboek kook eten ook mijn pubers hun bord áltijd leeg zonder te klagen, ze vinden alles lekker!',
+          'Mióta a te könyvedből főzök, még a tinédzsereim is mindent megesznek nyavalygás nélkül, szó szerint minden ízlik nekik!',
       },
       {
-        title: 'Ik hoef alleen nog maar te kiezen',
+        title: 'Nekem már csak választanom kell',
         quote:
-          'Ik vind het fantastisch! Zoveel variatie dat ik alleen maar even hoef te bladeren om weer iets zaligs op tafel te zetten.',
+          'Egyszerűen fantasztikus! Akkora a választék, hogy csak átlapozok pár oldalt, és már tudom is, mi finomság kerül az asztalra.',
       },
       {
-        title: 'Gewoon top!',
+        title: 'Egyszerűen csúcs!',
         quote:
-          'Nooit gedacht dat ik zo lekker zou kunnen koken, met zo weinig moeite. Het is gewoon top!',
+          'Soha nem hittem volna, hogy ilyen kevés erőfeszítéssel ilyen finomakat tudok főzni. Egyszerűen csúcs!',
       },
     ],
-    cta: 'Bestel nu',
+    cta: 'Rendelés most',
   },
 
   about: {
-    heading: 'Iets meer over mij...',
-    name: 'Joyce van de Pas',
-    intro: 'Hi, ik ben Joyce van de Pas, slowcooker liefhebber van het eerste uur',
+    heading: 'Egy kicsit többet rólam...',
+    name: 'Szabó Judit',
+    intro: 'Sziasztok, Szabó Judit vagyok, és a lassú főzés megszállott rajongója.',
     paragraphs: [
-      "Ik heb de slowcooker jaren geleden ooit ontvangen als cadeau en zo ben ik 'besmet' geraakt met het slowcookervirus.",
-      'Al meer dan 14 jaar experimenteer ik er op los met de slowcooker en ik gebruik hem zeker 3-4 keer per week.',
-      'Ik ben getrouwd en heb twee pubers; lang leve de drukke tijd van opgroeiende kinderen, verschillende roosters qua school en werk én alle diverse trainingstijden van sporten. Zonder de slowcooker zou het avondeten in ons gezin een stuk ingewikkelder en stressvoller zijn!',
-      'Wil je meer over mij weten, over mijn kookboek, slowcooker community of online slowcooker cursus? Stuur me gerust een mailtje, ik help je graag verder!',
+      'Évekkel ezelőtt kaptam ajándékba egy lassúfőzőt, és így "fertőzött meg" a lassú főzés varázsa.',
+      'Már több mint 14 éve bátran kísérletezem, és hetente legalább 3-4 alkalommal használom a gépet.',
+      'Férjnél vagyok és van két kamasz gyerekem; éljen az őrültek háza a növésben lévő gyerekekkel, a különböző suli- és munkabeosztásokkal, meg a rengeteg edzéssel. A lassúfőző nélkül a vacsorakészítés a mi családunkban sokkal bonyolultabb és idegőrlőbb feladat lenne!',
+      'Szeretnél többet megtudni rólam, a könyvemről vagy a lassúfőzős közösségünkről? Dobj egy e-mailt, szívesen segítek!'
     ],
-    cta: 'YESS, ik wil aan de slag met je kookboek',
-    imageAlt: 'Vers en kleurrijk gerecht, met liefde thuis bereid met de slowcooker',
+    cta: 'IGEN, el akarok kezdeni főzni a könyvből',
+    imageAlt: 'Otthon, szeretettel készült friss és színes étel a lassúfőzőből',
   },
 
   closing: {
-    heading: 'Recepten in kookboek',
-    primaryCta: 'Kookboek bestellen',
-    altCta: 'Nee, ik ga liever voor de e-books',
+    heading: 'Receptek a könyvben',
+    primaryCta: 'Könyv megrendelése',
+    altCta: 'Nem, csak az e-könyveket kérem',
   },
 
   footer: {
-    brand: 'Slowcooker kookboek',
-    author: 'door Joyce van de Pas',
-    tagline: 'Stressvrij, gezond én lekker koken met de slowcooker — 141 recepten die altijd lukken.',
-    copyright: '© 2026 Mamsatwork · Alle rechten voorbehouden.',
+    brand: 'Lassúfőző Receptkönyv',
+    author: 'Szabó Judit tollából',
+    tagline: 'Stresszmentes, egészséges és finom főzés — 141 recept, ami mindig sikerül.',
+    copyright: '© 2026 Mamsatwork · Minden jog fenntartva.',
     links: [
-      { label: 'Algemene voorwaarden', href: '#' },
-      { label: 'Privacybeleid', href: '#' },
-      { label: 'Contact', href: '#' },
+      { label: 'Általános Szerződési Feltételek', href: '#' },
+      { label: 'Adatvédelmi Tájékoztató', href: '#' },
+      { label: 'Kapcsolat', href: '#' },
     ],
   },
 };
