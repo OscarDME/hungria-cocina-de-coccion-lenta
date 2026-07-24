@@ -1,6 +1,6 @@
 ---
 // Sección 9 — FinalCta (doc §8.3). id="final-cta-section" OBLIGATORIO.
-// Copy de copy.finalCta. CTA principal al checkout hardcover.
+// Copy de copy.finalCta. CTA principal al checkout (e-book).
 import { Image } from 'astro:assets';
 import ctaImg from '../assets/hero-mockup.webp';
 import garantia from '../assets/garantia.webp';
@@ -57,7 +57,7 @@ const CHECKOUT_SLUG = new URL(CHECKOUT.ebooks).pathname.split('/').filter(Boolea
 
           <div class="mt-7 sm:max-w-md">
             <CheckoutButton
-              href={CHECKOUT.hardcoverNL}
+              href={CHECKOUT.ebooks}
               label={finalCta.cta}
               price={inspiration.price}
               variant="primary"

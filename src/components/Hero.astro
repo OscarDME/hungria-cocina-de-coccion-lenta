@@ -59,29 +59,7 @@ const { hero } = copy;
           variant="primary"
           block={true}
         />
-        <div class="grid gap-3 sm:grid-cols-2">
-          <CheckoutButton
-            href={CHECKOUT.hardcoverNL}
-            label={hero.ctaSecondary.label}
-            sub={hero.ctaSecondary.sub}
-            price={copy.inspiration.price}
-            variant="secondary"
-            block={true}
-          />
-          <CheckoutButton
-            href={CHECKOUT.hardcoverAbroad}
-            label={hero.ctaTertiary.label}
-            sub={hero.ctaTertiary.sub}
-            price={copy.inspiration.price}
-            variant="secondary"
-            block={true}
-          />
-        </div>
       </div>
-
-      <p class="mt-5 max-w-xl text-[13.5px] italic leading-relaxed text-slow-moss">
-        <RichText segments={hero.noteRich} />
-      </p>
     </div>
 
     {/* Columna mockup del libro (LCP) */}

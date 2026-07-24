@@ -65,24 +65,6 @@ const { story, hero, inspiration } = copy;
           variant="primary"
           block={true}
         />
-        <div class="grid gap-3 sm:grid-cols-2">
-          <CheckoutButton
-            href={CHECKOUT.hardcoverNL}
-            label={hero.ctaSecondary.label}
-            sub={hero.ctaSecondary.sub}
-            price={inspiration.price}
-            variant="secondary"
-            block={true}
-          />
-          <CheckoutButton
-            href={CHECKOUT.hardcoverAbroad}
-            label={hero.ctaTertiary.label}
-            sub={hero.ctaTertiary.sub}
-            price={inspiration.price}
-            variant="secondary"
-            block={true}
-          />
-        </div>
       </div>
     </div>
   </div>

@@ -36,15 +36,6 @@ export const copy = {
       stars: 5,
     },
     ctaPrimary: { label: 'Rendelés e-könyvként (PDF)', sub: 'kedvezőbb ár, azonnal a postaládádban' },
-    ctaSecondary: { label: 'Rendelés nyomtatott könyvként', sub: 'magyarországi kiszállítással' },
-    ctaTertiary: { label: 'Rendelés nyomtatott könyvként', sub: 'külföldi kiszállítással' },
-    noteRich: [
-      { t: 'A nyomtatott könyv ugyanazokat a recepteket tartalmazza, mint az 1-4. e-könyvek (' },
-      { t: 'összesen 141 recept', b: true },
-      { t: '). Az 5. és 6. e-könyvek receptjei (' },
-      { t: '61 új recept', b: true },
-      { t: ') csak digitális formátumban érhetők el.' },
-    ],
     pricePerRecipe: { pre: 'Mindössze', amount: '21 Ft', post: 'receptenként' },
     book: {
       title: 'Lassú Főzés',
@@ -77,7 +68,7 @@ export const copy = {
   story: {
     heading: 'Vacsora idegeskedés nélkül',
     paragraphs: [
-      'Veletek is előfordul, hogy teljesen leblokkoltok, amikor ki kell találni, mi legyen a vacsora?',
+      'Veled is előfordul, hogy teljesen lefagysz, amikor ki kell találni, mi legyen a vacsora?',
       'A munka utáni őrületben meg egyszerűen nem marad idő valami finomat, változatosat és egészségeset összedobni?',
       'Annyira megértem ezt!',
     ],
@@ -90,7 +81,7 @@ export const copy = {
     ],
     question: 'Te is nyugodt vacsorára vágysz, pontban 19:00-kor?',
     answer: 'Akkor az én 141 egészséges és ízletes receptem igazi megváltás lesz számodra!',
-    closer: 'Csak leültök az asztalhoz, és élvezitek a finom falatokat – ki ne vágyna erre?',
+    closer: 'Csak leülsz az asztalhoz, és élvezed a finom falatokat – ki ne vágyna erre?',
     imageAlt: 'Lassúfőzőből frissen tálalt, gőzölgő, ízletes zöldséges ragu',
   },
 
@@ -186,8 +177,50 @@ export const copy = {
     categories: [
       'Omlós és szaftos marhahúsos ételek',
       'Meglepően finom, krémes levesek',
-      'Igazi házias komfortételek, mint a rizottó, de elképesztő tésztás, csirkés és halas receptek is',
+      'Igazi házias, lélekmelengető fogások – a krémes rizottótól a tésztás, csirkés és halas receptekig',
     ],
+  },
+
+  bonuses: {
+    eyebrow: 'Ajándék a receptkönyv mellé',
+    heading: 'És ez még nem minden – 5 ajándékot is a kezedbe adok',
+    subheading: 'Hogy már az első naptól gördülékenyen menjen a főzés, ezt az 5 extrát is megkapod – teljesen ingyen, a könyv mellé.',
+    freeWord: 'INGYEN',
+    items: [
+      {
+        tag: '1. ajándék',
+        title: '4 hetes menüterv',
+        text: '28 vacsora előre megtervezve, napról napra. Soha többé nem kell azon agyalnod, mi legyen ma az asztalon – csak követed a tervet, és kész is vagy.',
+        value: '3990 Ft',
+      },
+      {
+        tag: '2. ajándék',
+        title: 'Automatikus bevásárlólisták',
+        text: 'A bolt polcai szerint, szakaszokra bontva. Egyszer végigfutod, bepakolsz a kosárba, és semmiről nem feledkezel meg.',
+        value: '2990 Ft',
+      },
+      {
+        tag: '3. ajándék',
+        title: '„Soha többé híg vagy íztelen étel” útmutató',
+        text: 'Pontos főzési idők alacsony és magas fokozaton, egyszerű szabályok, és a trükk, amivel bármelyik kedvenc receptedet a lassúfőzőhöz igazíthatod.',
+        value: '4990 Ft',
+      },
+      {
+        tag: '4. ajándék',
+        title: 'Batch-cooking és fagyasztás útmutató',
+        text: 'Főzz egyszer, egyél belőle egész héten! Megmutatom, hogyan készíts elő okosan nagyobb adagokat, és mit hogyan fagyassz le, hogy bármikor frissen tálalhasd.',
+        value: '3990 Ft',
+      },
+      {
+        tag: '5. ajándék',
+        title: 'Extra gyűjtemény: desszertek lassúfőzőben',
+        text: 'Bónusz 25 recept az édesszájúaknak – krémes, meleg finomságok, amelyekről el sem hinnéd, hogy a lassúfőző készíti el helyetted.',
+        value: '4990 Ft',
+      },
+    ],
+    totalLabel: 'Az ajándékok együttes értéke',
+    totalValue: '20 950 Ft',
+    freeLine: 'Ma a tiéd INGYEN, a receptkönyv mellé.',
   },
 
   socialReviews: {
@@ -203,7 +236,7 @@ export const copy = {
         name: 'Kiss Margit',
         source: 'WhatsApp',
         quote:
-          'Ma megint orzót ettünk, elképesztően finom lesz, szinte újjászülettem a receptjeiddel!',
+          'Ma megint orzót ettünk, elképesztően finom volt, szinte újjászülettem a receptjeiddel!',
       },
       {
         name: 'Balogh Alíz',
@@ -302,7 +335,7 @@ export const copy = {
     paragraphs: [
       'Évekkel ezelőtt kaptam ajándékba egy lassúfőzőt, és így "fertőzött meg" a lassú főzés varázsa.',
       'Már több mint 14 éve bátran kísérletezem, és hetente legalább 3-4 alkalommal használom a gépet.',
-      'Férjnél vagyok és van két kamasz gyerekem; éljen az őrültek háza a növésben lévő gyerekekkel, a különböző suli- és munkabeosztásokkal, meg a rengeteg edzéssel. A lassúfőző nélkül a vacsorakészítés a mi családunkban sokkal bonyolultabb és idegőrlőbb feladat lenne!',
+      'Férjnél vagyok és van két kamasz gyerekem; nálunk aztán megy a nagy őrület a folyton cseperedő gyerekekkel, a folyton változó suli- és munkabeosztásokkal, meg a rengeteg edzéssel. A lassúfőző nélkül a vacsorakészítés a mi családunkban sokkal bonyolultabb és idegőrlőbb feladat lenne!',
       'Szeretnél többet megtudni rólam, a könyvemről vagy a lassúfőzős közösségünkről? Dobj egy e-mailt, szívesen segítek!'
     ],
     cta: 'IGEN, el akarok kezdeni főzni a könyvből',

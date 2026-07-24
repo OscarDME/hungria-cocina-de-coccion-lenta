@@ -1,6 +1,6 @@
 ---
 // Sección 5 — "Nooit meer inspiratie gebrek" (agitación + CTA). Copy de
-// copy.inspiration. CTA al checkout hardcover (precio € 54,95).
+// copy.inspiration. CTA al checkout (e-book).
 import { copy } from '../lib/copy.js';
 import { CHECKOUT } from '../lib/checkout.js';
 import CheckoutButton from './CheckoutButton.astro';
@@ -43,7 +43,7 @@ const { inspiration } = copy;
           <p class="text-5xl font-black leading-none text-slow-forest-dark">{inspiration.price}</p>
           <div class="mt-6">
             <CheckoutButton
-              href={CHECKOUT.hardcoverNL}
+              href={CHECKOUT.ebooks}
               label={inspiration.cta}
               price={inspiration.price}
               variant="primary"

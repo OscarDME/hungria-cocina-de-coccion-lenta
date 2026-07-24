@@ -25,26 +25,12 @@ const { closing, hero, inspiration } = copy;
 
       <div class="mx-auto mt-8 flex max-w-xl flex-col gap-3">
         <CheckoutButton
-          href={CHECKOUT.hardcoverNL}
-          label={closing.primaryCta}
-          sub={hero.ctaSecondary.sub}
+          href={CHECKOUT.ebooks}
+          label={hero.ctaPrimary.label}
+          sub={hero.ctaPrimary.sub}
           price={inspiration.price}
           variant="primary"
           block={true}
-        />
-        <CheckoutButton
-          href={CHECKOUT.hardcoverAbroad}
-          label={closing.primaryCta}
-          sub={hero.ctaTertiary.sub}
-          price={inspiration.price}
-          variant="secondary"
-          block={true}
-        />
-        <CheckoutButton
-          href={CHECKOUT.ebooks}
-          label={closing.altCta}
-          price={inspiration.price}
-          variant="ghost"
         />
       </div>
 
